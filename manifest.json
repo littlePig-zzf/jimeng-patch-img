@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "即梦批量文生图工具",
+  "version": "1.0.0",
+  "description": "自动在即梦文生图页面批量输入提示词并上传参考图",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "fileSystem",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://jimeng.jianying.com/*"
+  ],
+  "action": {
+    "default_title": "即梦批量文生图工具"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://jimeng.jianying.com/*"
+      ],
+      "js": [
+        "floating-window.js",
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injected.js"
+      ],
+      "matches": [
+        "https://jimeng.jianying.com/*"
+      ]
+    }
+  ]
+}
